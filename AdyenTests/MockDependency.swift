@@ -9,7 +9,7 @@ final class MockDataProvider: DataProvider {
 
     var onFetch: ((DataProvider.FetchLocationCompletion) -> Void)?
 
-    func fetchLocationList(_ completion: @escaping DataProvider.FetchLocationCompletion) {
+    func fetchLocationList(_ radius: Int?, _ completion: @escaping DataProvider.FetchLocationCompletion) {
         onFetch?(completion)
     }
 }

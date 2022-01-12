@@ -12,7 +12,7 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
 
     let navigationViewController: UINavigationController
     private let title = NSLocalizedString("Locations", comment: "Locations")
-    private var locations: [Location] = []
+    private var locationUpdateDelegate: LocationListViewModelUpdateDelegate?
 
     init(dependency: T, navigation: UINavigationController) {
         navigationViewController = navigation
@@ -44,11 +44,40 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
             navigationViewController.viewControllers = [errorViewController]
             return
         }
-        self.locations = locations
         let locationsViewController = LocationsCollectionViewController(
             viewModel: LocationListViewModel(title, locations),
             layout: UICollectionViewFlowLayout()
         )
+        locationsViewController.delegate = self
+        locationUpdateDelegate = locationsViewController
         navigationViewController.viewControllers = [locationsViewController]
+    }
+    
+    private func fetchLocationWithRadius(_ radius: Int) {
+        dependency.dataProvider.fetchLocationList(radius, { result in
+            DispatchQueue.main.async { [weak self] in
+                self?.processUpdateResults(result)
+            }
+        })
+    }
+    
+    private func processUpdateResults(_ result: DataProvider.FetchLocationResult) {
+        guard case .success(let locations) = result, locations.isEmpty == false else {
+            var dataProviderError: DataProviderError? = nil
+            if case .failure(let error) = result, let error = error as? DataProviderError {
+                dataProviderError = error
+            }
+            let viewCtrlModel = ErrorViewModel(title: title, error: dataProviderError)
+            let errorViewController = ErrorViewController(viewModel: viewCtrlModel)
+            navigationViewController.present(errorViewController, animated: true)
+            return
+        }
+        locationUpdateDelegate?.didModelUpdated(LocationListViewModel(title, locations))
+    }
+}
+
+extension HomeCoordinator: LocationCollectionViewDelegate {
+    func didChangeRadius(_ radius: Int) {
+        fetchLocationWithRadius(radius)
     }
 }

@@ -33,5 +33,11 @@ protocol DataProvider {
     typealias FetchLocationResult = Result<[Location], Error>
     typealias FetchLocationCompletion = (FetchLocationResult) -> Void
 
-    func fetchLocationList(_ completion: @escaping FetchLocationCompletion)
+    func fetchLocationList(_ radius: Int?, _ completion: @escaping FetchLocationCompletion)
+}
+
+extension DataProvider {
+    func fetchLocationList(_ completion: @escaping FetchLocationCompletion) {
+        fetchLocationList(nil, completion)
+    }
 }

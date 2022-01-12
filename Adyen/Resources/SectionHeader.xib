@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QrH-tB-Mxx" customClass="SectionHeader" customModule="adyen" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="rbh-Ty-FBo" userLabel="Container View">
+                    <rect key="frame" x="0.0" y="-423" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="100" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="fRd-mn-KE4" userLabel="Slider">
+                            <rect key="frame" x="16" y="433" width="204" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="5L8-vG-f0g"/>
+                            </constraints>
+                        </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFk-9b-OiH" userLabel="Value">
+                            <rect key="frame" x="318" y="438" width="31" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFU-WE-Lsb">
+                            <rect key="frame" x="249" y="437" width="56" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="K3v-1y-2JO"/>
+                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="EFk-9b-OiH" firstAttribute="leading" secondItem="fRd-mn-KE4" secondAttribute="trailing" constant="100" id="Fqw-az-znl"/>
+                        <constraint firstItem="EFk-9b-OiH" firstAttribute="centerY" secondItem="rbh-Ty-FBo" secondAttribute="centerY" id="TnG-mG-amj"/>
+                        <constraint firstItem="fRd-mn-KE4" firstAttribute="leading" secondItem="rbh-Ty-FBo" secondAttribute="leadingMargin" constant="10" id="VSS-Lv-sbK"/>
+                        <constraint firstItem="fRd-mn-KE4" firstAttribute="centerY" secondItem="rbh-Ty-FBo" secondAttribute="centerY" id="VeN-52-ymy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="8h6-Vb-XN8"/>
+            <connections>
+                <outlet property="radiusSlider" destination="fRd-mn-KE4" id="J12-8l-0ck"/>
+                <outlet property="valueLabel" destination="EFk-9b-OiH" id="yGf-HF-iqK"/>
+            </connections>
+            <point key="canvasLocation" x="-147.82608695652175" y="-19.419642857142858"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

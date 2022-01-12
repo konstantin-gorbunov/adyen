@@ -26,3 +26,12 @@ extension NibInstantiatable where Self: UICollectionViewCell {
         return cell
     }
 }
+
+extension NibInstantiatable where Self: UICollectionReusableView {
+    static func dequeue(in collectionView: UICollectionView, kind: String, at indexPath: IndexPath) -> Self {
+        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: nibIdentifier, for: indexPath) as? Self else {
+                fatalError("Can't dequeue \(self) with \(collectionView) at \(indexPath)!")
+        }
+        return sectionHeader
+    }
+}

@@ -34,6 +34,9 @@
 		8B4D0606278ED5DE0068D743 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D0605278ED5DE0068D743 /* UICollectionView.swift */; };
 		8B4D0608278ED6120068D743 /* LocationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D0607278ED6120068D743 /* LocationsCollectionViewController.swift */; };
 		8B4D060A278ED6860068D743 /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D0609278ED6860068D743 /* LocationListViewModel.swift */; };
+		8B4D060E278F0DB70068D743 /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4D060D278F0DB60068D743 /* SectionHeader.xib */; };
+		8B4D0610278F0F670068D743 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D060F278F0F670068D743 /* SectionHeader.swift */; };
+		8B4D0612278F344E0068D743 /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D0611278F344D0068D743 /* SectionHeaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,9 @@
 		8B4D0605278ED5DE0068D743 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		8B4D0607278ED6120068D743 /* LocationsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCollectionViewController.swift; sourceTree = "<group>"; };
 		8B4D0609278ED6860068D743 /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
+		8B4D060D278F0DB60068D743 /* SectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
+		8B4D060F278F0F670068D743 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		8B4D0611278F344D0068D743 /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				8B4D059C278DB3C80068D743 /* Assets.xcassets */,
+				8B4D060D278F0DB60068D743 /* SectionHeader.xib */,
 				8B4D0601278ED2E20068D743 /* LocationViewCell.xib */,
 				8B4D05DB278DC1820068D743 /* ErrorViewController.xib */,
 				8B4D05DA278DC1820068D743 /* LoadingViewController.xib */,
@@ -219,6 +226,7 @@
 				8B4D05EB278DEF090068D743 /* ErrorViewModel.swift */,
 				8B4D05FD278EC8610068D743 /* LocationViewModel.swift */,
 				8B4D0609278ED6860068D743 /* LocationListViewModel.swift */,
+				8B4D0611278F344D0068D743 /* SectionHeaderViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 		8B4D05FA278EC8330068D743 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8B4D060F278F0F670068D743 /* SectionHeader.swift */,
 				8B4D05FB278EC83F0068D743 /* LocationViewCell.swift */,
 			);
 			path = Cells;
@@ -314,6 +323,7 @@
 			files = (
 				8B4D0602278ED2E20068D743 /* LocationViewCell.xib in Resources */,
 				8B4D05DC278DC1820068D743 /* LoadingViewController.xib in Resources */,
+				8B4D060E278F0DB70068D743 /* SectionHeader.xib in Resources */,
 				8B4D05DD278DC1820068D743 /* ErrorViewController.xib in Resources */,
 				8B4D05A0278DB3C80068D743 /* LaunchScreen.storyboard in Resources */,
 				8B4D059D278DB3C80068D743 /* Assets.xcassets in Resources */,
@@ -345,12 +355,14 @@
 				8B4D05FC278EC83F0068D743 /* LocationViewCell.swift in Sources */,
 				8B4D05EE278DEF1A0068D743 /* HomeCoordinator.swift in Sources */,
 				8B4D05CA278DB6910068D743 /* DataProvider.swift in Sources */,
+				8B4D0612278F344E0068D743 /* SectionHeaderViewModel.swift in Sources */,
 				8B4D0594278DB3BF0068D743 /* AppDelegate.swift in Sources */,
 				8B4D05E8278DEEE10068D743 /* Coordinator.swift in Sources */,
 				8B4D0606278ED5DE0068D743 /* UICollectionView.swift in Sources */,
 				8B4D05EC278DEF090068D743 /* ErrorViewModel.swift in Sources */,
 				8B4D05F6278DEF910068D743 /* MockDependency.swift in Sources */,
 				8B4D05F0278DEF2A0068D743 /* Location.swift in Sources */,
+				8B4D0610278F0F670068D743 /* SectionHeader.swift in Sources */,
 				8B4D05FE278EC8610068D743 /* LocationViewModel.swift in Sources */,
 				8B4D05F2278DEF3D0068D743 /* LocationsDataProvider.swift in Sources */,
 				8B4D060A278ED6860068D743 /* LocationListViewModel.swift in Sources */,

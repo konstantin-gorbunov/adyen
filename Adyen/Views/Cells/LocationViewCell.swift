@@ -32,6 +32,12 @@ final class LocationViewCell: UICollectionViewCell, NibInstantiatable {
         layoutSetup()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel?.text = nil
+        locationLabel?.text = nil
+    }
+    
     private func layoutSetup() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1

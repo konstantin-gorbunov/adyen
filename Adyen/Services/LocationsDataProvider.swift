@@ -12,6 +12,7 @@ struct LocationsDataProvider: DataProvider {
     private enum Constants {
         // TODO: add a support of variable radius, lat/lon as parameters
         static let urlTemplate = "https://api.tomtom.com/search/2/poiSearch/pizza.json?limit=10&view=Unified&relatedPois=off&key=%@"
+        static let radiusTemplate = "&radius=%d"
     }
     
     private var apiKey: String? {
@@ -27,14 +28,17 @@ struct LocationsDataProvider: DataProvider {
         }
     }
 
-    func fetchLocationList(_ completion: @escaping FetchLocationCompletion) {
+    func fetchLocationList(_ radius: Int?, _ completion: @escaping FetchLocationCompletion) {
         guard let apiKey = apiKey else {
             DispatchQueue.main.async {
                 completion(.failure(DataProviderError.wrongApiKey))
             }
             return
         }
-        let strUrl = String(format: Constants.urlTemplate, apiKey)
+        var strUrl = String(format: Constants.urlTemplate, apiKey)
+        if let radius = radius {
+            strUrl = strUrl + String(format: Constants.radiusTemplate, radius)
+        }
         guard let url = URL(string: strUrl) else {
             DispatchQueue.main.async {
                 completion(.failure(DataProviderError.wrongURL))
