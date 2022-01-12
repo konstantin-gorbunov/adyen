@@ -8,6 +8,7 @@
 import Foundation
 
 enum DataProviderError: Error {
+    case wrongApiKey
     case wrongURL
     case wrongData
     case parsingFailure(inner: Error)

@@ -10,12 +10,32 @@ import Foundation
 struct LocationsDataProvider: DataProvider {
     
     private enum Constants {
-        // TODO: use a template to generate a url with search request with variable radius, lat/lon and key as parameters
-        static let url: URL? = URL(string: "https://api.tomtom.com/search/2/poiSearch/pizza.json?limit=10")
+        // TODO: add a support of variable radius, lat/lon as parameters
+        static let urlTemplate = "https://api.tomtom.com/search/2/poiSearch/pizza.json?limit=10&view=Unified&relatedPois=off&key=%@"
+    }
+    
+    private var apiKey: String? {
+        get {
+            guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+                return nil
+            }
+            let plist = NSDictionary(contentsOfFile: filePath)
+            guard let value = plist?.object(forKey: "API_KEY") as? String else {
+                return nil
+            }
+            return value
+        }
     }
 
     func fetchLocationList(_ completion: @escaping FetchLocationCompletion) {
-        guard let url = Constants.url else {
+        guard let apiKey = apiKey else {
+            DispatchQueue.main.async {
+                completion(.failure(DataProviderError.wrongApiKey))
+            }
+            return
+        }
+        let strUrl = String(format: Constants.urlTemplate, apiKey)
+        guard let url = URL(string: strUrl) else {
             DispatchQueue.main.async {
                 completion(.failure(DataProviderError.wrongURL))
             }

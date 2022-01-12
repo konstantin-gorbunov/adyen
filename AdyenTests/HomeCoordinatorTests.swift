@@ -8,7 +8,7 @@
 import XCTest
 @testable import adyen
 
-class HomeCoordinatorTests: XCTestCase {
+final class HomeCoordinatorTests: XCTestCase {
     
     var dependency: MockDependency?
     var coordinator: HomeCoordinator<MockDependency>?
@@ -82,5 +82,26 @@ class HomeCoordinatorTests: XCTestCase {
         let viewModel = (secondVisible as? ErrorViewController)?.viewModel
         XCTAssertNotNil(viewModel)
         XCTAssertTrue(viewModel?.error == .wrongData)
+    }
+    
+    func testLocationScreen() {
+        let expectation = self.expectation(description: "Data Fetched")
+        let poi = Poi(name: "Domino's Pizza", phone: nil, brands: nil, categorySet: nil, categories: nil, classifications: nil, url: nil)
+        let poistion = GeoBias(lat: 52.37149, lon: 4.53102)
+        let location = Location(type: nil, id: nil, score: nil, dist: nil, info: nil, poi: poi, address: nil, position: poistion, viewport: nil, entryPoints: nil, dataSources: nil)
+        if let mock = (dependency?.dataProvider as? MockDataProvider) {
+            mock.onFetch = { completion in
+                completion(.success([location]))
+                DispatchQueue.main.async {
+                    expectation.fulfill()
+                }
+            }
+        }
+        coordinator?.start()
+        let firstVisible = coordinator?.navigationViewController.visibleViewController
+        XCTAssertTrue(firstVisible is LoadingViewController)
+        wait(for: [expectation], timeout: 1)
+        let secondVisible = coordinator?.navigationViewController.visibleViewController
+        XCTAssertTrue(secondVisible is LocationsCollectionViewController)
     }
 }

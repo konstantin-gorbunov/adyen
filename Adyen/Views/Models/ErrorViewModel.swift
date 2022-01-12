@@ -15,6 +15,8 @@ struct ErrorViewModel {
     var message: String? {
         if let error = error {
             switch error {
+            case .wrongApiKey:
+                return NSLocalizedString("Wrong API key", comment: "Wrong API key error message")
             case .wrongURL:
                 return NSLocalizedString("Wrong URL, can't load data", comment: "Wrong URL error message")
             case .wrongData:

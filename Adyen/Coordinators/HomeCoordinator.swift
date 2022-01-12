@@ -45,6 +45,10 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
             return
         }
         self.locations = locations
-        // TODO: represent locations
+        let locationsViewController = LocationsCollectionViewController(
+            viewModel: LocationListViewModel(title, locations),
+            layout: UICollectionViewFlowLayout()
+        )
+        navigationViewController.viewControllers = [locationsViewController]
     }
 }

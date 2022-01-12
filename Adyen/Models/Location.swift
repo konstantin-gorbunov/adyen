@@ -14,8 +14,10 @@ struct SearchResponse: Codable {
 
 // MARK: - Result
 struct Location: Codable {
-    let type, id: String?
-    let score, dist: Double?
+    let type: String?
+    let id: String?
+    let score: Double?
+    let dist: Double?
     let info: String?
     let poi: Poi?
     let address: Address?
@@ -50,7 +52,7 @@ struct EntryPoint: Codable {
 
 // MARK: - GeoBias
 struct GeoBias: Codable {
-    let lat, lon: Double?
+    let lat, lon: Double
 }
 
 // MARK: - Poi
