@@ -10,7 +10,7 @@ import Foundation
 struct ErrorViewModel {
 
     let title: String
-    let error: DataProviderError?
+    let error: ProviderError?
     
     var message: String? {
         if let error = error {
@@ -23,6 +23,8 @@ struct ErrorViewModel {
                 return NSLocalizedString("Wrong data format, can't load data", comment: "Loadin data error message")
             case .parsingFailure(let inner):
                 return String.localizedStringWithFormat(NSLocalizedString("Parsing failure %@", comment: "Parsing failure error message"), inner.localizedDescription)
+            case .locationError(let inner):
+                return String.localizedStringWithFormat(NSLocalizedString("Location error %@", comment: "Location determination problem"), inner.localizedDescription)
             }
         }
         return NSLocalizedString("Empty search result", comment: "Empty search result message")

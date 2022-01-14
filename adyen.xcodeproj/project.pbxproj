@@ -24,7 +24,6 @@
 		8B4D05F0278DEF2A0068D743 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05EF278DEF2A0068D743 /* Location.swift */; };
 		8B4D05F2278DEF3D0068D743 /* LocationsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05F1278DEF3D0068D743 /* LocationsDataProvider.swift */; };
 		8B4D05F4278DEF4B0068D743 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05F3278DEF4B0068D743 /* URLSession.swift */; };
-		8B4D05F6278DEF910068D743 /* MockDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05F5278DEF910068D743 /* MockDependency.swift */; };
 		8B4D05F9278DF0E80068D743 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05F7278DF0CB0068D743 /* HomeCoordinatorTests.swift */; };
 		8B4D05FC278EC83F0068D743 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05FB278EC83F0068D743 /* LocationViewCell.swift */; };
 		8B4D05FE278EC8610068D743 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05FD278EC8610068D743 /* LocationViewModel.swift */; };
@@ -37,6 +36,15 @@
 		8B4D060E278F0DB70068D743 /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4D060D278F0DB60068D743 /* SectionHeader.xib */; };
 		8B4D0610278F0F670068D743 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D060F278F0F670068D743 /* SectionHeader.swift */; };
 		8B4D0612278F344E0068D743 /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D0611278F344D0068D743 /* SectionHeaderViewModel.swift */; };
+		8BABCCA727919A2400A5324B /* CoordinateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCA627919A2400A5324B /* CoordinateProvider.swift */; };
+		8BABCCA927919A4400A5324B /* SystemCoordinateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCA827919A4400A5324B /* SystemCoordinateProvider.swift */; };
+		8BABCCAB27919A6500A5324B /* Coordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCAA27919A6500A5324B /* Coordinate2D.swift */; };
+		8BABCCAD2791A73E00A5324B /* MockLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCAC2791A73E00A5324B /* MockLocationManager.swift */; };
+		8BABCCAE2791A78100A5324B /* MockDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D05F5278DEF910068D743 /* MockDependency.swift */; };
+		8BABCCB12791A7C400A5324B /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCB02791A7C400A5324B /* MockDataProvider.swift */; };
+		8BABCCB32791A7DF00A5324B /* MockCoordinateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCB22791A7DF00A5324B /* MockCoordinateProvider.swift */; };
+		8BABCCB82791A8AC00A5324B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCB62791A88700A5324B /* LocationManager.swift */; };
+		8BABCCBA2791A8C100A5324B /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABCCB92791A8C100A5324B /* CLLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +92,14 @@
 		8B4D060D278F0DB60068D743 /* SectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
 		8B4D060F278F0F670068D743 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		8B4D0611278F344D0068D743 /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		8BABCCA627919A2400A5324B /* CoordinateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateProvider.swift; sourceTree = "<group>"; };
+		8BABCCA827919A4400A5324B /* SystemCoordinateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemCoordinateProvider.swift; sourceTree = "<group>"; };
+		8BABCCAA27919A6500A5324B /* Coordinate2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate2D.swift; sourceTree = "<group>"; };
+		8BABCCAC2791A73E00A5324B /* MockLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationManager.swift; sourceTree = "<group>"; };
+		8BABCCB02791A7C400A5324B /* MockDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataProvider.swift; sourceTree = "<group>"; };
+		8BABCCB22791A7DF00A5324B /* MockCoordinateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinateProvider.swift; sourceTree = "<group>"; };
+		8BABCCB62791A88700A5324B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		8BABCCB92791A8C100A5324B /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +158,7 @@
 		8B4D05A9278DB3C90068D743 /* AdyenTests */ = {
 			isa = PBXGroup;
 			children = (
-				8B4D05F5278DEF910068D743 /* MockDependency.swift */,
+				8BABCCAF2791A7B200A5324B /* mock */,
 				8B4D05AA278DB3C90068D743 /* AppCoordinatorTests.swift */,
 				8B4D05F7278DF0CB0068D743 /* HomeCoordinatorTests.swift */,
 			);
@@ -188,6 +204,9 @@
 			children = (
 				8B4D05C9278DB6910068D743 /* DataProvider.swift */,
 				8B4D05F1278DEF3D0068D743 /* LocationsDataProvider.swift */,
+				8BABCCA627919A2400A5324B /* CoordinateProvider.swift */,
+				8BABCCA827919A4400A5324B /* SystemCoordinateProvider.swift */,
+				8BABCCB62791A88700A5324B /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -196,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				8B4D05EF278DEF2A0068D743 /* Location.swift */,
+				8BABCCAA27919A6500A5324B /* Coordinate2D.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +226,7 @@
 				8B4D05F3278DEF4B0068D743 /* URLSession.swift */,
 				8B4D05FF278ED2930068D743 /* Instantiatable.swift */,
 				8B4D0605278ED5DE0068D743 /* UICollectionView.swift */,
+				8BABCCB92791A8C100A5324B /* CLLocationManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +259,17 @@
 				8B4D05FB278EC83F0068D743 /* LocationViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		8BABCCAF2791A7B200A5324B /* mock */ = {
+			isa = PBXGroup;
+			children = (
+				8B4D05F5278DEF910068D743 /* MockDependency.swift */,
+				8BABCCAC2791A73E00A5324B /* MockLocationManager.swift */,
+				8BABCCB02791A7C400A5324B /* MockDataProvider.swift */,
+				8BABCCB22791A7DF00A5324B /* MockCoordinateProvider.swift */,
+			);
+			path = mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +378,7 @@
 			files = (
 				8B4D05E6278DEECE0068D743 /* AppCoordinator.swift in Sources */,
 				8B4D05EA278DEEF70068D743 /* ErrorViewController.swift in Sources */,
+				8BABCCB82791A8AC00A5324B /* LocationManager.swift in Sources */,
 				8B4D0600278ED2930068D743 /* Instantiatable.swift in Sources */,
 				8B4D0608278ED6120068D743 /* LocationsCollectionViewController.swift in Sources */,
 				8B4D05F4278DEF4B0068D743 /* URLSession.swift in Sources */,
@@ -353,19 +386,22 @@
 				8B4D0598278DB3BF0068D743 /* LoadingViewController.swift in Sources */,
 				8B4D0604278ED5BC0068D743 /* BaseCollectionViewController.swift in Sources */,
 				8B4D05FC278EC83F0068D743 /* LocationViewCell.swift in Sources */,
+				8BABCCA927919A4400A5324B /* SystemCoordinateProvider.swift in Sources */,
 				8B4D05EE278DEF1A0068D743 /* HomeCoordinator.swift in Sources */,
 				8B4D05CA278DB6910068D743 /* DataProvider.swift in Sources */,
+				8BABCCA727919A2400A5324B /* CoordinateProvider.swift in Sources */,
 				8B4D0612278F344E0068D743 /* SectionHeaderViewModel.swift in Sources */,
 				8B4D0594278DB3BF0068D743 /* AppDelegate.swift in Sources */,
 				8B4D05E8278DEEE10068D743 /* Coordinator.swift in Sources */,
 				8B4D0606278ED5DE0068D743 /* UICollectionView.swift in Sources */,
 				8B4D05EC278DEF090068D743 /* ErrorViewModel.swift in Sources */,
-				8B4D05F6278DEF910068D743 /* MockDependency.swift in Sources */,
 				8B4D05F0278DEF2A0068D743 /* Location.swift in Sources */,
 				8B4D0610278F0F670068D743 /* SectionHeader.swift in Sources */,
+				8BABCCAB27919A6500A5324B /* Coordinate2D.swift in Sources */,
 				8B4D05FE278EC8610068D743 /* LocationViewModel.swift in Sources */,
 				8B4D05F2278DEF3D0068D743 /* LocationsDataProvider.swift in Sources */,
 				8B4D060A278ED6860068D743 /* LocationListViewModel.swift in Sources */,
+				8BABCCBA2791A8C100A5324B /* CLLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,8 +409,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BABCCAE2791A78100A5324B /* MockDependency.swift in Sources */,
 				8B4D05AB278DB3C90068D743 /* AppCoordinatorTests.swift in Sources */,
+				8BABCCB12791A7C400A5324B /* MockDataProvider.swift in Sources */,
 				8B4D05F9278DF0E80068D743 /* HomeCoordinatorTests.swift in Sources */,
+				8BABCCB32791A7DF00A5324B /* MockCoordinateProvider.swift in Sources */,
+				8BABCCAD2791A73E00A5324B /* MockLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -506,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -523,6 +563,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53QGH7B4JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = adyen/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -551,6 +592,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53QGH7B4JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = adyen/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

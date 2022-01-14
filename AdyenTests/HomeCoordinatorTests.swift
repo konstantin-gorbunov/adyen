@@ -52,6 +52,11 @@ final class HomeCoordinatorTests: XCTestCase {
                 }
             }
         }
+        if let mock = (dependency?.locationProvider as? MockCoordinateProvider) {
+            mock.onFetch = { completion in
+                completion(.success(Coordinate2D(latitude: 52.370216, longitude: 4.895168)))
+            }
+        }
         coordinator?.start()
         let firstVisible = coordinator?.navigationViewController.visibleViewController
         XCTAssertTrue(firstVisible is LoadingViewController)
@@ -67,10 +72,15 @@ final class HomeCoordinatorTests: XCTestCase {
         let expectation = self.expectation(description: "Data Fetch failed, wrong data")
         if let mock = (dependency?.dataProvider as? MockDataProvider) {
             mock.onFetch = { completion in
-                completion(.failure(DataProviderError.wrongData))
+                completion(.failure(ProviderError.wrongData))
                 DispatchQueue.main.async {
                     expectation.fulfill()
                 }
+            }
+        }
+        if let mock = (dependency?.locationProvider as? MockCoordinateProvider) {
+            mock.onFetch = { completion in
+                completion(.success(Coordinate2D(latitude: 52.370216, longitude: 4.895168)))
             }
         }
         coordinator?.start()
@@ -95,6 +105,11 @@ final class HomeCoordinatorTests: XCTestCase {
                 DispatchQueue.main.async {
                     expectation.fulfill()
                 }
+            }
+        }
+        if let mock = (dependency?.locationProvider as? MockCoordinateProvider) {
+            mock.onFetch = { completion in
+                completion(.success(Coordinate2D(latitude: 52.370216, longitude: 4.895168)))
             }
         }
         coordinator?.start()

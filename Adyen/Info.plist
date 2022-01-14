@@ -4,6 +4,14 @@
 <dict>
     <key>API_KEY</key>
     <string>7FnHydtouztStkJ7NDozteNm7hqQjFHx</string>
+    <key>NSLocationUsageDescription</key>
+    <string>We use your location to provide exact information</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We use your location to provide exact information</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We use your location to provide exact information</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use your location to provide exact information</string>
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleExecutable</key>

@@ -10,9 +10,9 @@ import Foundation
 struct LocationsDataProvider: DataProvider {
     
     private enum Constants {
-        // TODO: add a support of variable radius, lat/lon as parameters
         static let urlTemplate = "https://api.tomtom.com/search/2/poiSearch/pizza.json?limit=10&view=Unified&relatedPois=off&key=%@"
         static let radiusTemplate = "&radius=%d"
+        static let coordinateTemplate = "&lat=%f&lon=%f"
     }
     
     private var apiKey: String? {
@@ -28,10 +28,10 @@ struct LocationsDataProvider: DataProvider {
         }
     }
 
-    func fetchLocationList(_ radius: Int?, _ completion: @escaping FetchLocationCompletion) {
+    func fetchLocationList(_ coordinate: Coordinate2D?, _ radius: Int?, _ completion: @escaping FetchLocationCompletion) {
         guard let apiKey = apiKey else {
             DispatchQueue.main.async {
-                completion(.failure(DataProviderError.wrongApiKey))
+                completion(.failure(ProviderError.wrongApiKey))
             }
             return
         }
@@ -39,16 +39,19 @@ struct LocationsDataProvider: DataProvider {
         if let radius = radius {
             strUrl = strUrl + String(format: Constants.radiusTemplate, radius)
         }
+        if let coordinate = coordinate {
+            strUrl = strUrl + String(format: Constants.coordinateTemplate, coordinate.latitude, coordinate.longitude)
+        }
         guard let url = URL(string: strUrl) else {
             DispatchQueue.main.async {
-                completion(.failure(DataProviderError.wrongURL))
+                completion(.failure(ProviderError.wrongURL))
             }
             return
         }
         let task = URLSession.shared.searchResponseTask(with: url) { searchResult, response, error in
             if let error = error {
                 DispatchQueue.main.async {
-                    completion(.failure(DataProviderError.parsingFailure(inner: error)))
+                    completion(.failure(ProviderError.parsingFailure(inner: error)))
                 }
             }
             if let result = searchResult?.results {
@@ -57,7 +60,7 @@ struct LocationsDataProvider: DataProvider {
                 }
             } else {
                 DispatchQueue.main.async {
-                    completion(.failure(DataProviderError.wrongData))
+                    completion(.failure(ProviderError.wrongData))
                 }
             }
         }

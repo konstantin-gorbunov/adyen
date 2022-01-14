@@ -7,14 +7,15 @@
 
 import Foundation
 
-enum DataProviderError: Error {
+enum ProviderError: Error {
     case wrongApiKey
     case wrongURL
     case wrongData
     case parsingFailure(inner: Error)
+    case locationError(inner: Error)
 }
 
-extension DataProviderError: Equatable {
+extension ProviderError: Equatable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         switch(lhs, rhs) {
         case(.wrongURL, .wrongURL):
@@ -33,11 +34,5 @@ protocol DataProvider {
     typealias FetchLocationResult = Result<[Location], Error>
     typealias FetchLocationCompletion = (FetchLocationResult) -> Void
 
-    func fetchLocationList(_ radius: Int?, _ completion: @escaping FetchLocationCompletion)
-}
-
-extension DataProvider {
-    func fetchLocationList(_ completion: @escaping FetchLocationCompletion) {
-        fetchLocationList(nil, completion)
-    }
+    func fetchLocationList(_ coordinate: Coordinate2D?, _ radius: Int?, _ completion: @escaping FetchLocationCompletion)
 }

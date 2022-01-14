@@ -13,6 +13,7 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
     let navigationViewController: UINavigationController
     private let title = NSLocalizedString("Locations", comment: "Locations")
     private var locationUpdateDelegate: LocationListViewModelUpdateDelegate?
+    private var lastCoordinate: Coordinate2D?
 
     init(dependency: T, navigation: UINavigationController) {
         navigationViewController = navigation
@@ -25,18 +26,41 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
         let loadingViewController = LoadingViewController(nibName: nil, bundle: nil)
         navigationViewController.viewControllers = [loadingViewController]
         loadingViewController.title = title
-
-        dependency.dataProvider.fetchLocationList { result in
+        
+        dependency.locationProvider.fetchLocation { result in
             DispatchQueue.main.async { [weak self] in
-                self?.processResults(result)
+                self?.processLocationResults(result)
             }
         }
     }
+    
+    private func processLocationResults(_ result: CoordinateProvider.FetchCoordinateResult) {
+        guard case .success(let coordinate) = result else {
+            var dataProviderError: ProviderError? = nil
+            if case .failure(let error) = result, let error = error as? ProviderError {
+                dataProviderError = error
+            }
+            let viewCtrlModel = ErrorViewModel(title: title, error: dataProviderError)
+            let errorViewController = ErrorViewController(viewModel: viewCtrlModel)
+            navigationViewController.viewControllers = [errorViewController]
+            return
+        }
+        lastCoordinate = coordinate
+        fetchLocationList(coordinate)
+    }
+    
+    private func fetchLocationList(_ coordinate: Coordinate2D) {
+        dependency.dataProvider.fetchLocationList(coordinate, nil, { result in
+            DispatchQueue.main.async { [weak self] in
+                self?.processDataResults(result)
+            }
+        })
+    }
 
-    private func processResults(_ result: DataProvider.FetchLocationResult) {
+    private func processDataResults(_ result: DataProvider.FetchLocationResult) {
         guard case .success(let locations) = result, locations.isEmpty == false else {
-            var dataProviderError: DataProviderError? = nil
-            if case .failure(let error) = result, let error = error as? DataProviderError {
+            var dataProviderError: ProviderError? = nil
+            if case .failure(let error) = result, let error = error as? ProviderError {
                 dataProviderError = error
             }
             let viewCtrlModel = ErrorViewModel(title: title, error: dataProviderError)
@@ -53,18 +77,18 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
         navigationViewController.viewControllers = [locationsViewController]
     }
     
-    private func fetchLocationWithRadius(_ radius: Int) {
-        dependency.dataProvider.fetchLocationList(radius, { result in
+    private func fetchLocationWithRadius(_ coordinate: Coordinate2D?, _ radius: Int) {
+        dependency.dataProvider.fetchLocationList(coordinate, radius, { result in
             DispatchQueue.main.async { [weak self] in
-                self?.processUpdateResults(result)
+                self?.processUpdateDataResults(result)
             }
         })
     }
     
-    private func processUpdateResults(_ result: DataProvider.FetchLocationResult) {
+    private func processUpdateDataResults(_ result: DataProvider.FetchLocationResult) {
         guard case .success(let locations) = result, locations.isEmpty == false else {
-            var dataProviderError: DataProviderError? = nil
-            if case .failure(let error) = result, let error = error as? DataProviderError {
+            var dataProviderError: ProviderError? = nil
+            if case .failure(let error) = result, let error = error as? ProviderError {
                 dataProviderError = error
             }
             let viewCtrlModel = ErrorViewModel(title: title, error: dataProviderError)
@@ -78,6 +102,6 @@ final class HomeCoordinator<T: Dependency>: Coordinator<T> {
 
 extension HomeCoordinator: LocationCollectionViewDelegate {
     func didChangeRadius(_ radius: Int) {
-        fetchLocationWithRadius(radius)
+        fetchLocationWithRadius(lastCoordinate, radius)
     }
 }
